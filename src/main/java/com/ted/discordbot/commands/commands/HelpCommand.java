@@ -22,11 +22,13 @@ public class HelpCommand implements ServerCommand {
 
         //build out the meat of the embed so that users can know what the bot can do
         embedBuilder.setDescription("**.help** - *prints this embed*\n" +
-                                    "**.play <url>** - *starts the Bard playing some music*\n" +
+                                    "**.play <url>** - *starts the Bard playing some music or restarts a paused song*\n" +
                                     "**.restart** - *restarts the Bard*\n" +
                                     "**.summon** - *summons the Bard*\n" +
                                     "**.disconnect** - *disconnects the Bard*\n" +
-                                    "**.volume <integer>** - *sets the volume to the level requested*");
+                                    "**.volume <integer>** - *sets the volume to the level requested*\n" +
+                                    "**.stop** - *stops the current song*\n" +
+                                    "**.pause** - *pauses the current song*");
 
         //send the embed to the text channel
         textChannel.sendMessage(embedBuilder.build()).queue();

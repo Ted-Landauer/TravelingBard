@@ -1,11 +1,6 @@
 package com.ted.discordbot.commands;
 
-import com.ted.discordbot.commands.commands.HelpCommand;
-import com.ted.discordbot.commands.commands.PlayCommand;
-import com.ted.discordbot.commands.commands.RestartCommand;
-import com.ted.discordbot.commands.commands.SummonCommand;
-import com.ted.discordbot.commands.commands.DisconnectCommand;
-import com.ted.discordbot.commands.commands.VolumeCommand;
+import com.ted.discordbot.commands.commands.*;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
@@ -25,8 +20,8 @@ public class CommandManager extends ListenerAdapter {
     //private final LoopQueueCommand loopQueueCommand;
     //private final ShuffleCommand shuffleCommand;
     private final DisconnectCommand disconnectCommand;
-    //private final PauseCommand pauseCommand;
-    //private final StopCommand stopCommand;
+    private final PauseCommand pauseCommand;
+    private final StopCommand stopCommand;
     //private final SkipCommand skipCommand;
     private final VolumeCommand volumeCommand;
     //private final SeekCommand seekCommand;
@@ -41,8 +36,8 @@ public class CommandManager extends ListenerAdapter {
         //this.loopQueueCommand = new LoopQueueCommand();
         //this.shuffleCommand = new ShuffleCommand();
         this.disconnectCommand = new DisconnectCommand();
-        //this.pauseCommand = new PauseCommand();
-        //this.stopCommand = new StopCommand();
+        this.pauseCommand = new PauseCommand();
+        this.stopCommand = new StopCommand();
         //this.skipCommand = new SkipCommand();
         this.volumeCommand = new VolumeCommand();
         //this.seekCommand = new SeekCommand();
@@ -106,9 +101,13 @@ public class CommandManager extends ListenerAdapter {
                     break;
 
                 case ".pause":
+
+                    this.pauseCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
                 case ".stop":
+
+                    this.stopCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
                 case ".skip":
