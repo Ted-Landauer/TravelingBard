@@ -5,6 +5,7 @@ import com.ted.discordbot.commands.commands.PlayCommand;
 import com.ted.discordbot.commands.commands.RestartCommand;
 import com.ted.discordbot.commands.commands.SummonCommand;
 import com.ted.discordbot.commands.commands.DisconnectCommand;
+import com.ted.discordbot.commands.commands.VolumeCommand;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
@@ -26,7 +27,7 @@ public class CommandManager extends ListenerAdapter {
     //private final PauseCommand pauseCommand;
     //private final StopCommand stopCommand;
     //private final SkipCommand skipCommand;
-    //private final VolumeCommand volumeCommand;
+    private final VolumeCommand volumeCommand;
     //private final SeekCommand seekCommand;
 
 
@@ -43,7 +44,7 @@ public class CommandManager extends ListenerAdapter {
         //this.pauseCommand = new PauseCommand();
         //this.stopCommand = new StopCommand();
         //this.skipCommand = new SkipCommand();
-        //this.volumeCommand = new VolumeCommand();
+        this.volumeCommand = new VolumeCommand();
         //this.seekCommand = new SeekCommand();
 
     }
@@ -104,6 +105,7 @@ public class CommandManager extends ListenerAdapter {
                     break;
 
                 case ".volume":
+                    this.volumeCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
 
