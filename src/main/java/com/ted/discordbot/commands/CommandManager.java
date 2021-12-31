@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class CommandManager extends ListenerAdapter {
 
+    //initialize the individual command instances
     private final HelpCommand helpCommand;
     private final PlayCommand playCommand;
     private final RestartCommand restartCommand;
@@ -30,8 +31,7 @@ public class CommandManager extends ListenerAdapter {
     private final VolumeCommand volumeCommand;
     //private final SeekCommand seekCommand;
 
-
-
+    //constructor for the command manager
     public CommandManager() {
         this.helpCommand = new HelpCommand();
         this.playCommand = new PlayCommand();
@@ -49,20 +49,27 @@ public class CommandManager extends ListenerAdapter {
 
     }
 
+    //method to handle when a command is sent to the bot
     @Override
     public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
 
+        //check if the user is not a bot
         if(!event.getMember().getUser().isBot()) {
+
+            //grab the string of commands
             String[] arguments = event.getMessage().getContentRaw().split(" ");
 
+            //grab required info for the later perform command method parameters
             Guild guild = event.getGuild();
             Member member = event.getMember();
             TextChannel textChannel = event.getChannel();
             Message message = event.getMessage();
 
+            //switch case for each command trigger
             switch (arguments[0]) {
                 case ".help":
 
+                    //call the specific class for the command and run its perform command method
                     this.helpCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
@@ -75,10 +82,12 @@ public class CommandManager extends ListenerAdapter {
                     break;
 
                 case ".restart":
+
                     restartCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
                 case ".summon":
+
                     this.summonCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
@@ -92,6 +101,7 @@ public class CommandManager extends ListenerAdapter {
                     break;
 
                 case ".disconnect":
+
                     this.disconnectCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
@@ -105,15 +115,11 @@ public class CommandManager extends ListenerAdapter {
                     break;
 
                 case ".volume":
+
                     this.volumeCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
-
             }
         }
-
     }
-
-
-
 }

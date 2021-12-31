@@ -9,13 +9,18 @@ import net.dv8tion.jda.api.entities.TextChannel;
 
 public class HelpCommand implements ServerCommand {
 
-
+    //implemented perform command method
     @Override
     public void performCommand(String[] args, Guild guild, Member member, TextChannel textChannel, Message message) {
+
+        //create a new embed pane
         EmbedBuilder embedBuilder = new EmbedBuilder();
 
+        //set the values for the embed
         embedBuilder.setColor(0xf1e7fe);
         embedBuilder.setTitle("Useful Commands");
+
+        //build out the meat of the embed so that users can know what the bot can do
         embedBuilder.setDescription("**.help** - *prints this embed*\n" +
                                     "**.play <url>** - *starts the Bard playing some music*\n" +
                                     "**.restart** - *restarts the Bard*\n" +
@@ -23,6 +28,7 @@ public class HelpCommand implements ServerCommand {
                                     "**.disconnect** - *disconnects the Bard*\n" +
                                     "**.volume <integer>** - *sets the volume to the level requested*");
 
+        //send the embed to the text channel
         textChannel.sendMessage(embedBuilder.build()).queue();
     }
 }
