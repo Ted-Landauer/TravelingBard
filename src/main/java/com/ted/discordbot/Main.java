@@ -4,6 +4,9 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import com.ted.discordbot.commands.CommandManager;
+import com.ted.discordbot.commands.config.ConfigFile;
+import com.ted.discordbot.commands.config.ConfigValues;
+import com.ted.discordbot.data.LiteSQL;
 import com.ted.discordbot.music.AudioManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -21,10 +24,16 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //LiteSQL.openConnection();
+
+        ConfigFile.loadConfig();
+        ConfigValues.loadValues();
+
         //leaving line 25 empty so that the bot's SSO token isn't exposed in source control
-        jdaBuilder = JDABuilder.createDefault("");
+        jdaBuilder = JDABuilder.createDefault(ConfigValues.BOT_TOKEN);
         jdaBuilder.setStatus(OnlineStatus.IDLE);
         //jdaBuilder.setActivity(Activity.playing("Hello my friend. I am a discord bot"));
+
 
         audioPlayerManager = new DefaultAudioPlayerManager();
         audioManager = new AudioManager();

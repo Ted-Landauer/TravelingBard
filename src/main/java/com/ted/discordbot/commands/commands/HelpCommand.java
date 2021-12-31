@@ -16,7 +16,11 @@ public class HelpCommand implements ServerCommand {
 
         embedBuilder.setColor(0xf1e7fe);
         embedBuilder.setTitle("Useful Commands");
-        embedBuilder.setDescription("**.help** - *prints this embed*\n**.play <url>** - *plays some music*");
+        embedBuilder.setDescription("**.help** - *prints this embed*\n" +
+                                    "**.play <url>** - *plays some music*\n" +
+                                    "**.restart** - *restarts the Bard*\n" +
+                                    "**.summon** - *summons the Bard*\n" +
+                                    "**.disconnect** - *disconnects the bard*");
 
         textChannel.sendMessage(embedBuilder.build()).queue();
     }
