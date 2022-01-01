@@ -38,7 +38,7 @@ public class TrackInfoCommand implements ServerCommand {
                 //build out the meat of the embed so that users can know what the bot can do
                 embedBuilder.setDescription("**Title** - " + player.getPlayingTrack().getInfo().title + "\n" +
                                             "**Author** - " + player.getPlayingTrack().getInfo().author + "\n" +
-                                            "**Length** - " + (((player.getPlayingTrack().getInfo().length)/1000)/60) + " Seconds");
+                                            "**Length** - " + (((player.getPlayingTrack().getInfo().length)/1000)) + " Seconds");
 
                 //send the embed to the text channel
                 textChannel.sendMessage(embedBuilder.build()).queue();
