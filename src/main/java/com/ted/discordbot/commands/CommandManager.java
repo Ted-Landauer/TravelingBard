@@ -1,10 +1,10 @@
 package com.ted.discordbot.commands;
 
+import com.ted.discordbot.Main;
 import com.ted.discordbot.commands.commands.*;
-import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +16,7 @@ public class CommandManager extends ListenerAdapter {
     private final PlayCommand playCommand;
     private final RestartCommand restartCommand;
     private final SummonCommand summonCommand;
-    //private final LoopCommand loopCommand;
+    private final LoopCommand loopCommand;
     //private final LoopQueueCommand loopQueueCommand;
     //private final ShuffleCommand shuffleCommand;
     private final DisconnectCommand disconnectCommand;
@@ -33,7 +33,7 @@ public class CommandManager extends ListenerAdapter {
         this.playCommand = new PlayCommand();
         this.restartCommand = new RestartCommand();
         this.summonCommand = new SummonCommand();
-        //this.loopCommand = new LoopCommand();
+        this.loopCommand = new LoopCommand();
         //this.loopQueueCommand = new LoopQueueCommand();
         //this.shuffleCommand = new ShuffleCommand();
         this.disconnectCommand = new DisconnectCommand();
@@ -64,70 +64,70 @@ public class CommandManager extends ListenerAdapter {
 
             //switch case for each command trigger
             switch (arguments[0]) {
-                case ".help":
+                case "?help":
 
                     //call the specific class for the command and run its perform command method
                     this.helpCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
-                case ".test":
+                case "?test":
                     break;
 
-                case ".play":
+                case "?play":
 
                     playCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
-                case ".restart":
+                case "?restart":
 
                     restartCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
-                case ".summon":
+                case "?summon":
 
                     this.summonCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
-                case ".loop":
+                case "?loop":
 
-                    //this.loopCommand.performCommand(arguments, guild, member, textChannel, message);
+                    this.loopCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
-                case ".loop queue":
+                case "?loop queue":
                     break;
 
-                case ".shuffle":
+                case "?shuffle":
                     break;
 
-                case ".disconnect":
+                case "?disconnect":
 
                     this.disconnectCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
-                case ".pause":
+                case "?pause":
 
                     this.pauseCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
-                case ".stop":
+                case "?stop":
 
                     this.stopCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
-                case ".skip":
+                case "?skip":
                     break;
 
-                case ".volume":
+                case "?volume":
 
                     this.volumeCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
-                case ".seek":
+                case "?seek":
 
                     this.seekCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
-                case ".info":
+                case "?info":
 
                     this.trackInfoCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;

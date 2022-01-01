@@ -36,10 +36,10 @@ public class Main {
         jdaBuilder = JDABuilder.createDefault(ConfigValues.BOT_TOKEN);
 
         //set the online status for the bot (TO-DO: automate the status so it isn't always idle)
-        jdaBuilder.setStatus(OnlineStatus.IDLE);
+        jdaBuilder.setStatus(OnlineStatus.ONLINE);
 
         //set the activity that the bot displays (TO-DO: automate this so that it changes when the bot is playing music)
-        //jdaBuilder.setActivity(Activity.playing("Hello my friend. I am a discord bot"));
+        jdaBuilder.setActivity(Activity.listening("For the call to adventure!"));
 
         //Grab new instances of the audio player and manager
         audioPlayerManager = new DefaultAudioPlayerManager();

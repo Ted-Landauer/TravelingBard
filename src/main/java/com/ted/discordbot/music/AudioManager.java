@@ -1,6 +1,8 @@
 package com.ted.discordbot.music;
 
 import com.ted.discordbot.Main;
+import com.ted.discordbot.queue.TrackQueue;
+
 import java.util.HashMap;
 
 //class to handle the management of audio

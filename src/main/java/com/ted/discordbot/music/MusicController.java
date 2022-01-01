@@ -2,6 +2,7 @@ package com.ted.discordbot.music;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.ted.discordbot.Main;
+import com.ted.discordbot.queue.TrackQueue;
 import net.dv8tion.jda.api.entities.Guild;
 
 public class MusicController {
@@ -9,6 +10,7 @@ public class MusicController {
     //initalize the guild and audio player
     private Guild guild;
     private AudioPlayer audioPlayer;
+    private TrackQueue trackQueue;
 
     //constructor for music controller
     public MusicController(Guild guild) {
@@ -17,11 +19,15 @@ public class MusicController {
         this.guild = guild;
         this.audioPlayer = Main.getAudioPlayerManager().createPlayer();
 
+        //WIP
+        this.trackQueue = new TrackQueue(this.audioPlayer, this.guild.getIdLong());
+
+
         //set the Audio Send Handler that the manager will use to provide an audio connection
         this.guild.getAudioManager().setSendingHandler(new AudioPlayerSendHandler(audioPlayer));
 
         //sets the initial player volume
-        this.audioPlayer.setVolume(50);
+        this.audioPlayer.setVolume(15);
     }
 
     //getter for the guild if it isn't null
