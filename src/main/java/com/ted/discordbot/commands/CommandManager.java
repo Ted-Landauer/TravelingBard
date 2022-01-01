@@ -24,7 +24,8 @@ public class CommandManager extends ListenerAdapter {
     private final StopCommand stopCommand;
     //private final SkipCommand skipCommand;
     private final VolumeCommand volumeCommand;
-    //private final SeekCommand seekCommand;
+    private final SeekCommand seekCommand;
+    private final TrackInfoCommand trackInfoCommand;
 
     //constructor for the command manager
     public CommandManager() {
@@ -40,7 +41,8 @@ public class CommandManager extends ListenerAdapter {
         this.stopCommand = new StopCommand();
         //this.skipCommand = new SkipCommand();
         this.volumeCommand = new VolumeCommand();
-        //this.seekCommand = new SeekCommand();
+        this.seekCommand = new SeekCommand();
+        this.trackInfoCommand = new TrackInfoCommand();
 
     }
 
@@ -87,6 +89,8 @@ public class CommandManager extends ListenerAdapter {
                     break;
 
                 case ".loop":
+
+                    //this.loopCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
                 case ".loop queue":
@@ -116,6 +120,16 @@ public class CommandManager extends ListenerAdapter {
                 case ".volume":
 
                     this.volumeCommand.performCommand(arguments, guild, member, textChannel, message);
+                    break;
+
+                case ".seek":
+
+                    this.seekCommand.performCommand(arguments, guild, member, textChannel, message);
+                    break;
+
+                case ".info":
+
+                    this.trackInfoCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
 
             }

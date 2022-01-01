@@ -17,18 +17,24 @@ public class HelpCommand implements ServerCommand {
         EmbedBuilder embedBuilder = new EmbedBuilder();
 
         //set the values for the embed
-        embedBuilder.setColor(0xf1e7fe);
+        embedBuilder.setColor(0x4791DE);
         embedBuilder.setTitle("Useful Commands");
 
         //build out the meat of the embed so that users can know what the bot can do
-        embedBuilder.setDescription("**.help** - *prints this embed*\n" +
-                                    "**.play <url>** - *starts the Bard playing some music or restarts a paused song*\n" +
-                                    "**.restart** - *restarts the Bard*\n" +
-                                    "**.summon** - *summons the Bard*\n" +
-                                    "**.disconnect** - *disconnects the Bard*\n" +
-                                    "**.volume <integer>** - *sets the volume to the level requested*\n" +
-                                    "**.stop** - *stops the current song*\n" +
-                                    "**.pause** - *pauses the current song*");
+        embedBuilder.addField("__Bot Commands__",
+                "**.help** - *prints a list of commands*\n" +
+                        "**.restart** - *restarts the Bard*\n" +
+                        "**.summon** - *summons the Bard*\n" +
+                        "**.disconnect** - *disconnects the Bard*",
+                true);
+
+        embedBuilder.addField("__Audio Player Commands__",
+                "**.play <url>** - *starts the Bard playing some music or restarts a paused song*\n" +
+                        "**.stop** - *stops the current song*\n" +
+                        "**.pause** - *pauses the current song*\n" +
+                        "**.volume <integer>** - *sets the volume to the level requested*\n" +
+                        "**.seek <time_in_seconds>** - *skips the track forward by the number of seconds requested*",
+                false);
 
         //send the embed to the text channel
         textChannel.sendMessage(embedBuilder.build()).queue();

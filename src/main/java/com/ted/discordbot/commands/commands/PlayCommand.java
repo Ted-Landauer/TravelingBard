@@ -8,12 +8,12 @@ import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.ted.discordbot.Main;
 import com.ted.discordbot.commands.types.ServerCommand;
-import com.ted.discordbot.music.AudioManager;
 import com.ted.discordbot.music.MusicController;
 import net.dv8tion.jda.api.entities.*;
 
-public class PlayCommand implements ServerCommand {
 
+
+public class PlayCommand implements ServerCommand {
 
     //implemented perform command method
     @Override
@@ -46,7 +46,6 @@ public class PlayCommand implements ServerCommand {
                     for(int i = 1; i < arguments.length; i++) {
 
                         builder.append(arguments[i] + " ");
-
                     }
 
                     //convert the builder to a proper string and trim and leading or trailing strings
@@ -62,6 +61,17 @@ public class PlayCommand implements ServerCommand {
                     //store the rawlink as the URL
                     final String url = rawLink;
 
+                    long timeToJump = 0;
+
+                    //check if the url has a timestamp value for where to start playing from
+                    if(url.contains("t=")) {
+                        String[] temp = url.split("t=");
+
+                        timeToJump = Long.parseLong(temp[1]);
+                    }
+
+                    long finalTimeToJump = timeToJump;
+
                     //give the audio player manager what it needs to load the song url
                     audioPlayerManager.loadItem(url, new AudioLoadResultHandler() {
 
@@ -71,6 +81,12 @@ public class PlayCommand implements ServerCommand {
 
                             //play the track
                             musicController.getAudioPlayer().playTrack(audioTrack);
+
+                            //if a youtube link has a time value then jump to that just after starting the song
+                            if(finalTimeToJump > 0) {
+
+                                player.getPlayingTrack().setPosition(finalTimeToJump * 1000);
+                            }
                         }
 
                         @Override

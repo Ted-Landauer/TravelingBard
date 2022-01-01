@@ -19,6 +19,7 @@ public class DisconnectCommand implements ServerCommand {
 
             //close the bot's connection to the voice channel
             audioManager.closeAudioConnection();
+            textChannel.sendMessage("It's been a pleasure playing for you and I look forward journeying with you later").queue();
 
         } else {
 
