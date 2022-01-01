@@ -39,6 +39,7 @@ public class PlayCommand implements ServerCommand {
                     audioManager.openAudioConnection(voiceChannel);
                     audioManager.setSelfDeafened(true);
 
+
                     //create a string builder
                     StringBuilder builder = new StringBuilder();
 
