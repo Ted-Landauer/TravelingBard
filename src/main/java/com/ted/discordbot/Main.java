@@ -39,7 +39,8 @@ public class Main {
         jdaBuilder.setStatus(OnlineStatus.ONLINE);
 
         //set the activity that the bot displays (TO-DO: automate this so that it changes when the bot is playing music)
-        jdaBuilder.setActivity(Activity.listening("For the call to adventure!"));
+        //jdaBuilder.setActivity(Activity.listening("For the call to adventure!"));
+        jdaBuilder.setActivity(Activity.playing("Some epic tunes!"));
 
         //Grab new instances of the audio player and manager
         audioPlayerManager = new DefaultAudioPlayerManager();
