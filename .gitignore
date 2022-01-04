@@ -2,6 +2,7 @@
 config.yml
 database.db
 /*.class
+target/*
 
 
 # intelliJ files
