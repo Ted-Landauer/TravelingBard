@@ -1,6 +1,8 @@
 # project files
 config.yml
 database.db
+*.class
+
 
 # intelliJ files
 /.idea/
