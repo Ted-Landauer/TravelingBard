@@ -1,7 +1,7 @@
 # project files
 config.yml
 database.db
-**/*.class
+/*.class
 
 
 # intelliJ files
