@@ -33,7 +33,8 @@ public class HelpCommand implements ServerCommand {
                         "**?stop** - *stops the current song*\n" +
                         "**?pause** - *pauses the current song*\n" +
                         "**?volume <integer>** - *sets the volume to the level requested*\n" +
-                        "**?seek <time_in_seconds>** - *skips the track forward by the number of seconds requested*",
+                        "**?seek <time_in_seconds>** - *skips the track forward by the number of seconds requested*\n" +
+                        "**?info** - *Provides info for the song currently playing*",
                 false);
 
         //send the embed to the text channel
